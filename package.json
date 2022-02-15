@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/comp426-2022-spring/a03-sonikacp/issues"
   },
-  "homepage": "https://github.com/comp426-2022-spring/a03-sonikacp#readme"
+  "homepage": "https://github.com/comp426-2022-spring/a03-sonikacp#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "minimist": "^1.2.5"
+  }
 }
