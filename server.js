@@ -10,6 +10,8 @@ const server = app.listen(HTTP_PORT, () => {
 // Default response for any other request
 app.use(function(req, res){
     res.status(404).send('404 NOT FOUND')
+    res.type("text/plain")
+    // res.status(404)
 });
 
 app.get('/app/', (req, res) => {
@@ -20,3 +22,4 @@ app.get('/app/', (req, res) => {
         res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
         res.end(res.statusCode+ ' ' +res.statusMessage)
     });
+// localhost:5000/app/echo/whatever
