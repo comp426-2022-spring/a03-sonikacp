@@ -128,36 +128,36 @@ const server = app.listen(HTTP_PORT, () => {
 // });
 
 app.get('/app/', (req, res) => {
-    // Respond with status 200
-        res.statusCode = 200;
-    // Respond with status message "OK"
-        res.statusMessage = 'OK';
-        res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-        res.end(res.statusCode+ ' ' +res.statusMessage)
-    });
+  // Respond with status 200
+    res.statusCode = 200;
+  // Respond with status message "OK"
+    res.statusMessage = 'OK';
+    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+    res.end(res.statusCode+ ' ' +res.statusMessage)
+  });
 // localhost:5000/app/echo/whatever
 
 
 // Endpoint /app/flip/ that returns JSON {"flip":"heads"} or {"flip":"tails"} corresponding to the results of the random coin flip.
-app.get('/app/flips/', (req, res) => {
+app.get('/app/flip/', (req, res) => {
     var one_flip = coinFlip();
     res.status(200).json({'flip' : flip})
 });
 
 // Endpoint /app/flips/:number that returns JSON including an array of the raw random flips and a summary. Example below.
 app.get('/app/flips/:number', (req, res) => {
-	var raw_flips = coinFlips(req.params.number);
+	  var raw_flips = coinFlips(req.params.number);
     var flips_summary = countFlips(raw_flips);
     res.status(200).json({'raw' : raw_flips, 'summary' : flips_summary})
 });
 
 // Endpoint /app/flip/call/heads that returns the result of a random flip match against heads as JSON.
-app.get('/app/flips/call/heads', (req, res) => {
+app.get('/app/flip/call/heads', (req, res) => {
     res.status(200).json(flipACoin('heads'));
 });
 
 // Endpoint /app/flip/call/tails that returns the result of a random flip match against tails as JSON.
-app.get('/app/flips/call/tails', (req, res) => {
+app.get('/app/flip/call/tails', (req, res) => {
     res.status(200).json(flipACoin('tails'));
 });
 
