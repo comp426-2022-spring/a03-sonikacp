@@ -109,7 +109,7 @@ const app = express()
 
 // Require minimist module 
 const minimist = require('minimist')
-var HTTP_PORT = 5555;
+var HTTP_PORT = 5000;
 
 // Start an app server
 const server = app.listen(HTTP_PORT, () => {
@@ -144,7 +144,7 @@ app.get('/app/flips/', (req, res) => {
 app.get('/app/flips/:number', (req, res) => {
 	var raw_flips = coinFlips(req.params.number);
     var flips_summary = countFlips(raw_flips);
-    res.status(200).json({'raw flips' : raw_flips, 'summary of flips' : flips_summary})
+    res.status(200).json({'raw' : raw_flips, 'summary' : flips_summary})
 });
 
 // Endpoint /app/flip/call/heads that returns the result of a random flip match against heads as JSON.
