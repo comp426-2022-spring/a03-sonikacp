@@ -120,12 +120,6 @@ const server = app.listen(HTTP_PORT, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%',HTTP_PORT))
 });
 
-// // Default response for any other request
-// app.use(function(req, res){
-//     res.status(404).send('404 NOT FOUND')
-//     res.type("text/plain")
-//     // res.status(404)
-// });
 
 app.get('/app/', (req, res) => {
   // Respond with status 200
@@ -135,12 +129,11 @@ app.get('/app/', (req, res) => {
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
     res.end(res.statusCode+ ' ' +res.statusMessage)
   });
-// localhost:5000/app/echo/whatever
 
 
 // Endpoint /app/flip/ that returns JSON {"flip":"heads"} or {"flip":"tails"} corresponding to the results of the random coin flip.
-app.get('/app/flip', (req, res) => {
-    var one_flip = coinFlip();
+app.get('/app/flip/', (req, res) => {
+    var flip = coinFlip();
     res.status(200).json({'flip' : flip})
 });
 
