@@ -107,9 +107,13 @@ function countFlips(array) {
 const express = require('express')
 const app = express()
 
-// Require minimist module 
-const minimist = require('minimist')
-var HTTP_PORT = 5000;
+// Require minimist module and create port
+const args = require('minimist')(process.argv.slice(2))
+args['port']
+if (args.port == undefined) {
+  args.port = 5000
+}
+var HTTP_PORT = args.port;
 
 // Start an app server
 const server = app.listen(HTTP_PORT, () => {
